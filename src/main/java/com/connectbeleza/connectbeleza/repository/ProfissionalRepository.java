@@ -23,7 +23,6 @@ public interface ProfissionalRepository extends JpaRepository<Profissional, UUID
               AND p.verificado = true
               AND (:categoria IS NULL OR :categoria MEMBER OF p.especialidades)
               AND (:nome IS NULL OR LOWER(p.usuario.nome) LIKE LOWER(CONCAT('%', :nome, '%')))
-            ORDER BY p.notaMedia DESC
             """)
     Page<Profissional> buscarPorFiltros(
             @Param("categoria") CategoriaPsicologica categoria,
@@ -40,7 +39,6 @@ public interface ProfissionalRepository extends JpaRepository<Profissional, UUID
                     cos(radians(p.longitude) - radians(:lng)) +
                     sin(radians(:lat)) * sin(radians(p.latitude))
                   )) <= :raioKm
-            ORDER BY p.notaMedia DESC
             """)
     Page<Profissional> buscarPorLocalizacao(
             @Param("lat") Double lat,
