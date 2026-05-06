@@ -36,7 +36,7 @@ public class UsuarioService {
                 .email(request.email())
                 .senha(passwordEncoder.encode(request.senha()))
                 .telefone(request.telefone())
-                .role(request.role() != null ? request.role() : UserRole.CLIENTE)
+                .role(request.role() != null ? request.role() : UserRole.PACIENTE)
                 .build();
 
         usuario = usuarioRepository.save(usuario);

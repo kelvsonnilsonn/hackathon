@@ -27,8 +27,6 @@ public class GerenciarPerfilProfissionalService {
     private final ServicoRepository servicoRepository;
     private final AgendaRepository agendaRepository;
     private final AgendamentoRepository agendamentoRepository;
-    private final AvaliacaoRepository avaliacaoRepository;
-    private final ParceriaRepository parceriaRepository;
     private final ProfissionalService profissionalService;
     private final PaginacaoUtil paginacaoUtil;
 
@@ -182,19 +180,12 @@ public class GerenciarPerfilProfissionalService {
                 java.time.LocalDateTime.now().minusYears(10),
                 java.time.LocalDateTime.now()).size();
 
-        long totalParcerias = parceriaRepository
-                .findByProfissionalIdOrderByCriadoEmDesc(profId, paginacaoUtil.build(0, Integer.MAX_VALUE))
-                .getTotalElements();
-
         return new MetricasProfissionalResponse(
                 profId,
                 profissional.getUsuario().getNome(),
                 totalAgend,
                 concluidos,
-                cancelados,
-                profissional.getNotaMedia(),
-                profissional.getTotalAvaliacoes(),
-                totalParcerias
+                cancelados
         );
     }
 

@@ -5,7 +5,7 @@ public enum TipoLembrete {
     TARDE,
     NOITE,
     HIDRATACAO,
-    ROTINA_SKINCARE,
+    ROTINA,
     AGENDAMENTO,
     PERSONALIZADO
 }

@@ -8,8 +8,5 @@ public record MetricasProfissionalResponse(
         String nome,
         long totalAgendamentos,
         long agendamentosConcluidos,
-        long agendamentosCancelados,
-        BigDecimal notaMedia,
-        long totalAvaliacoes,
-        long totalParcerias
+        long agendamentosCancelados
 ) {}

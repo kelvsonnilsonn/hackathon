@@ -1,11 +1,9 @@
 package com.connectbeleza.connectbeleza.controller;
 
-import com.connectbeleza.connectbeleza.domain.enums.StatusParceria;
 import com.connectbeleza.connectbeleza.dto.request.AgendaRequest;
 import com.connectbeleza.connectbeleza.dto.request.GerenciarPerfilProfissionalRequest;
 import com.connectbeleza.connectbeleza.dto.request.ServicoRequest;
 import com.connectbeleza.connectbeleza.dto.response.*;
-import com.connectbeleza.connectbeleza.service.EmpresaService;
 import com.connectbeleza.connectbeleza.service.GerenciarPerfilProfissionalService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -38,7 +36,6 @@ import java.util.UUID;
 public class ProfissionalPerfilController {
 
     private final GerenciarPerfilProfissionalService perfilService;
-    private final EmpresaService empresaService;
 
     // ─── GERENCIAR PERFIL ────────────────────────────────────────────────────
 
@@ -122,27 +119,6 @@ public class ProfissionalPerfilController {
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "20") int size) {
         return ResponseEntity.ok(perfilService.listarAgendamentos(uid(ud), page, size));
-    }
-
-    // ─── GERENCIAR PARCERIAS ──────────────────────────────────────────────────
-
-    @GetMapping("/parcerias")
-    @Operation(summary = "Gerenciar parcerias — lista solicitações recebidas de empresas")
-    public ResponseEntity<Page<ParceriaResponse>> listarParcerias(
-            @AuthenticationPrincipal UserDetails ud,
-            @RequestParam(defaultValue = "0") int page,
-            @RequestParam(defaultValue = "20") int size) {
-        return ResponseEntity.ok(empresaService.listarParceriasDoProfissional(uid(ud), page, size));
-    }
-
-    @PatchMapping("/parcerias/{parceriaId}")
-    @Operation(summary = "Gerenciar parcerias — aceitar ou recusar solicitação")
-    public ResponseEntity<ParceriaResponse> responderParceria(
-            @AuthenticationPrincipal UserDetails ud,
-            @PathVariable UUID parceriaId,
-            @RequestParam StatusParceria status) {
-        return ResponseEntity.ok(
-                empresaService.responderParceria(uid(ud), parceriaId, status));
     }
 
     private UUID uid(UserDetails ud) {

@@ -1,6 +1,6 @@
 package com.connectbeleza.connectbeleza.dto.response;
 
-import com.connectbeleza.connectbeleza.domain.enums.CategoriaEstetica;
+import com.connectbeleza.connectbeleza.domain.enums.CategoriaPsicologica;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -13,11 +13,9 @@ public record ProfissionalResponse(
         String email,
         String bio,
         Integer anosExperiencia,
-        List<CategoriaEstetica> especialidades,
+        List<CategoriaPsicologica> especialidades,
         List<String> certificacoes,
         String urlPortfolio,
-        BigDecimal notaMedia,
-        Integer totalAvaliacoes,
         Boolean verificado,
         String localizacao
 ) {}

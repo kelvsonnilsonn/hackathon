@@ -1,6 +1,6 @@
 package com.connectbeleza.connectbeleza.domain.entity;
 
-import com.connectbeleza.connectbeleza.domain.enums.CategoriaEstetica;
+import com.connectbeleza.connectbeleza.domain.enums.CategoriaPsicologica;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -34,7 +34,7 @@ public class Servico {
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private CategoriaEstetica categoria;
+    private CategoriaPsicologica categoria;
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal preco;

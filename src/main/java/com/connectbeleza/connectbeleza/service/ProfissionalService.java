@@ -71,10 +71,8 @@ public class ProfissionalService {
      * Chamado pelo AvaliacaoService após persistir avaliação.
      */
     @Transactional
-    public void atualizarNotaMedia(UUID profissionalId, double novaMedia, long totalAvaliacoes) {
+    public void atualizarNotaMedia(UUID profissionalId) {
         Profissional profissional = buscarEntidadePorId(profissionalId);
-        profissional.setNotaMedia(BigDecimal.valueOf(novaMedia).setScale(2, RoundingMode.HALF_UP));
-        profissional.setTotalAvaliacoes((int) totalAvaliacoes);
         profissionalRepository.save(profissional);
     }
 
@@ -89,8 +87,6 @@ public class ProfissionalService {
                 p.getEspecialidades(),
                 p.getCertificacoes(),
                 p.getUrlPortfolio(),
-                p.getNotaMedia(),
-                p.getTotalAvaliacoes(),
                 p.getVerificado(),
                 p.getLocalizacao()
         );

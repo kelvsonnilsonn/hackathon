@@ -1,6 +1,6 @@
 package com.connectbeleza.connectbeleza.domain.entity;
 
-import com.connectbeleza.connectbeleza.domain.enums.CategoriaEstetica;
+import com.connectbeleza.connectbeleza.domain.enums.CategoriaPsicologica;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -36,7 +36,7 @@ public class Profissional {
             joinColumns = @JoinColumn(name = "profissional_id"))
     @Enumerated(EnumType.STRING)
     @Column(name = "especialidade")
-    private List<CategoriaEstetica> especialidades;
+    private List<CategoriaPsicologica> especialidades;
 
     @ElementCollection
     @CollectionTable(name = "profissional_certificacoes",
@@ -46,14 +46,6 @@ public class Profissional {
 
     @Column(name = "url_portfolio")
     private String urlPortfolio;
-
-    @Column(name = "nota_media", precision = 3, scale = 2)
-    @Builder.Default
-    private BigDecimal notaMedia = BigDecimal.ZERO;
-
-    @Column(name = "total_avaliacoes")
-    @Builder.Default
-    private Integer totalAvaliacoes = 0;
 
     @Column(name = "verificado", nullable = false)
     @Builder.Default

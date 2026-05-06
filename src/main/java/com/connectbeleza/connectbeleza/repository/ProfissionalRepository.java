@@ -1,7 +1,7 @@
 package com.connectbeleza.connectbeleza.repository;
 
 import com.connectbeleza.connectbeleza.domain.entity.Profissional;
-import com.connectbeleza.connectbeleza.domain.enums.CategoriaEstetica;
+import com.connectbeleza.connectbeleza.domain.enums.CategoriaPsicologica;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -26,7 +26,7 @@ public interface ProfissionalRepository extends JpaRepository<Profissional, UUID
             ORDER BY p.notaMedia DESC
             """)
     Page<Profissional> buscarPorFiltros(
-            @Param("categoria") CategoriaEstetica categoria,
+            @Param("categoria") CategoriaPsicologica categoria,
             @Param("nome") String nome,
             Pageable pageable);
 
@@ -46,6 +46,6 @@ public interface ProfissionalRepository extends JpaRepository<Profissional, UUID
             @Param("lat") Double lat,
             @Param("lng") Double lng,
             @Param("raioKm") Double raioKm,
-            @Param("categoria") CategoriaEstetica categoria,
+            @Param("categoria") CategoriaPsicologica categoria,
             Pageable pageable);
 }

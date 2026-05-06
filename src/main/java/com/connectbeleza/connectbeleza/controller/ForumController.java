@@ -1,6 +1,6 @@
 package com.connectbeleza.connectbeleza.controller;
 
-import com.connectbeleza.connectbeleza.domain.enums.CategoriaEstetica;
+import com.connectbeleza.connectbeleza.domain.enums.CategoriaPsicologica;
 import com.connectbeleza.connectbeleza.dto.request.RespostaRequest;
 import com.connectbeleza.connectbeleza.dto.request.TopicoRequest;
 import com.connectbeleza.connectbeleza.dto.response.ForumResponse;
@@ -49,7 +49,7 @@ public class ForumController {
 
     @GetMapping("/categoria/{categoria}")
     @Operation(summary = "Acessar fórum por categoria de estética")
-    public ResponseEntity<ForumResponse> forumPorCategoria(@PathVariable CategoriaEstetica categoria) {
+    public ResponseEntity<ForumResponse> forumPorCategoria(@PathVariable CategoriaPsicologica categoria) {
         return ResponseEntity.ok(forumService.buscarPorCategoria(categoria));
     }
 

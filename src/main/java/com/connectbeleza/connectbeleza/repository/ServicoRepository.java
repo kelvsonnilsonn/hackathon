@@ -1,7 +1,7 @@
 package com.connectbeleza.connectbeleza.repository;
 
 import com.connectbeleza.connectbeleza.domain.entity.Servico;
-import com.connectbeleza.connectbeleza.domain.enums.CategoriaEstetica;
+import com.connectbeleza.connectbeleza.domain.enums.CategoriaPsicologica;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,5 +14,5 @@ public interface ServicoRepository extends JpaRepository<Servico, UUID> {
 
     Page<Servico> findByProfissionalIdAndAtivoTrue(UUID profissionalId, Pageable pageable);
 
-    Page<Servico> findByCategoriaAndAtivoTrue(CategoriaEstetica categoria, Pageable pageable);
+    Page<Servico> findByCategoriaAndAtivoTrue(CategoriaPsicologica categoria, Pageable pageable);
 }

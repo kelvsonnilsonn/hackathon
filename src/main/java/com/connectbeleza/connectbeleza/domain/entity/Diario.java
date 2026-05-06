@@ -1,6 +1,5 @@
 package com.connectbeleza.connectbeleza.domain.entity;
 
-import com.connectbeleza.connectbeleza.domain.enums.CategoriaPsicologica;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -9,33 +8,32 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "forums")
 @Getter
 @Setter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
-public class Forum {
+public class Diario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @Column(nullable = false, length = 120)
-    private String nome;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "autor_id", nullable = false)
+    private Usuario autor;
 
-    @Column(length = 500)
-    private String descricao;
+    @Column(nullable = false, columnDefinition = "TEXT")
+    private String conteudo;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, unique = true)
-    private CategoriaPsicologica categoria;
-
-    @Column(nullable = false)
-    @Builder.Default
-    private Boolean ativo = true;
+    @Column(name = "privacidade")
+    private boolean ehPrivado = true;
 
     @CreationTimestamp
     @Column(name = "criado_em", updatable = false)
     private LocalDateTime criadoEm;
+
+    public void mudarPrivacidade(){
+        this.ehPrivado = !this.ehPrivado;
+    }
 }

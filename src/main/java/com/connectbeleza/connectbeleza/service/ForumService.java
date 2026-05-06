@@ -1,7 +1,7 @@
 package com.connectbeleza.connectbeleza.service;
 
 import com.connectbeleza.connectbeleza.domain.entity.Forum;
-import com.connectbeleza.connectbeleza.domain.enums.CategoriaEstetica;
+import com.connectbeleza.connectbeleza.domain.enums.CategoriaPsicologica;
 import com.connectbeleza.connectbeleza.dto.response.ForumResponse;
 import com.connectbeleza.connectbeleza.exception.RecursoNaoEncontradoException;
 import com.connectbeleza.connectbeleza.repository.ForumRepository;
@@ -31,7 +31,7 @@ public class ForumService {
     }
 
     @Transactional(readOnly = true)
-    public ForumResponse buscarPorCategoria(CategoriaEstetica categoria) {
+    public ForumResponse buscarPorCategoria(CategoriaPsicologica categoria) {
         return forumRepository.findByCategoria(categoria)
                 .filter(Forum::getAtivo)
                 .map(this::toResponse)

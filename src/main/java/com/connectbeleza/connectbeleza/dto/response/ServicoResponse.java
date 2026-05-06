@@ -1,6 +1,6 @@
 package com.connectbeleza.connectbeleza.dto.response;
 
-import com.connectbeleza.connectbeleza.domain.enums.CategoriaEstetica;
+import com.connectbeleza.connectbeleza.domain.enums.CategoriaPsicologica;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -12,7 +12,7 @@ public record ServicoResponse(
         String nomeProfissional,
         String nome,
         String descricao,
-        CategoriaEstetica categoria,
+        CategoriaPsicologica categoria,
         BigDecimal preco,
         Integer duracaoMinutos,
         Boolean ativo,

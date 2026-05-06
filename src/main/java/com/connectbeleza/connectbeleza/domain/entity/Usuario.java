@@ -31,6 +31,10 @@ public class Usuario {
     @Column(nullable = false)
     private String senha;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "psicologo_id")
+    private Profissional psicologo;
+
     @Column(length = 20)
     private String telefone;
 
@@ -53,4 +57,12 @@ public class Usuario {
     @UpdateTimestamp
     @Column(name = "atualizado_em")
     private LocalDateTime atualizadoEm;
+
+    public boolean temPsicologo(){
+        return this.psicologo != null;
+    }
+
+    public void contratarPsicologo(Profissional psicologo){
+        this.psicologo = psicologo;
+    }
 }
